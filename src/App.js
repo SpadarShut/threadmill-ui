@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import css from './App.module.scss';
+import { Switch, BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
+import Dashboard from './Dashboard';
+import EntertainmentSelect from './EntertainmentSelect';
+import EntertainmentView from './EntertainmentView';
+import Tabs from './Tabs';
+import routes from './routes';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className={css.app}>
+          <div className={css.innerLayout}>
+            <div className={css.content}>
+              <Switch>
+                <Route exact path={routes.dashboard.path} component={Dashboard}/>
+                <Route path={routes.select.path} component={EntertainmentSelect}/>
+                <Route path={routes.view.path} component={EntertainmentView}/>
+              </Switch>
+            </div>
+            <div className={css.tabs}>
+              <Tabs />
+            </div>
+          </div>
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
