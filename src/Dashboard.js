@@ -1,9 +1,20 @@
-import React, { PureComponent } from 'react'
+import React, {PureComponent} from 'react'
 
 class Dashboard extends PureComponent {
   render() {
+    let {workout} = this.props
     return (
-        <div>Dash</div>
+      <ul>
+        {
+          Object.keys(workout).map((key) => {
+            return (
+              <li key={key}>
+                <strong>{key}:</strong> {workout[key]}
+              </li>
+            )
+          })
+        }
+      </ul>
     );
   }
 }
