@@ -1,4 +1,3 @@
-
 const defaultState = {
   duration: 0,
   duration_countdown: 0,
@@ -15,10 +14,10 @@ export default class Workout {
     this.maxDurationSeconds = maxDurationSeconds;
     this.onTick = onTick;
     this.onStop = onStop;
-    this.timer = null;
+    this.timerIntervalId = null;
     this.state = Object.assign({}, defaultState);
 
-    this.tickInterval = 500
+    this.tickInterval = 500;
   }
 
   tick = () => {
@@ -29,7 +28,7 @@ export default class Workout {
     const duration_countdown = maxDurationSeconds * 1000 - duration;
     const calories = duration * burnRate / 1000;
     const distance = duration / 1000 / 60 / 60 * speed;
-    const pace = duration / 1000 / 60 / distance; // ?
+    const pace = duration / 1000 / 60 / distance;
 
     this.state = {
       duration,
@@ -51,7 +50,7 @@ export default class Workout {
   start = () => {
     this.resetState();
     this.onTick(this.state);
-    this.timer = setInterval(this.tick, this.tickInterval);
+    this.timerIntervalId = setInterval(this.tick, this.tickInterval);
   }
 
   resetState = () => {
@@ -62,7 +61,7 @@ export default class Workout {
   }
 
   stop = () => {
-    clearInterval(this.timer)
+    clearInterval(this.timerIntervalId)
     this.onStop(this.state)
   }
 }

@@ -4,15 +4,17 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
+    "date-fns": "^2.0.0-alpha.27",
+    "intrinsic-scale": "^3.0.3",
+    "moment": "^2.24.0",
+    "moment-duration-format": "^2.2.2",
+    "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-resize-aware": "3.0.0-beta.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"
-  },
-  "devDependencies": {
-    "node-sass": "^4.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

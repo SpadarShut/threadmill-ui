@@ -1,35 +1,23 @@
 .app {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     background: #fff;
     color: #000000;
-    //display: inline-block;
-    //padding-bottom: calc(1024/600 * 100%);
-
-
-    &:after {
-        content: '';
-        display: block;
-        padding-bottom: calc(600/1024 * 100%);
-    }
-}
-
-.innerLayout {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 .content {
     flex: 1 1 auto;
-    background: #eee;
+    min-height: 0;
+    overflow: hidden;
+    padding: var(--spacer);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .tabs {
-    flex: 0 1 15%;
-    background: #666666;
+    flex: 0 0 auto;
+    padding: 0 var(--spacer) calc(var(--spacer) / 2);
 }

@@ -1,7 +1,12 @@
 :root {
-  font-size: calc(12px * 2vh);
+  --spacer: 1rem;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 html,
 body,
 #root {

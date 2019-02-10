@@ -1,0 +1,15 @@
+.cell {
+  text-align: center;
+}
+.value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1;
+}
+.label {
+  text-transform: uppercase;
+  opacity: .6;
+  font-size: .85rem;
+  margin-top: .5em;
+  letter-spacing: .02em;
+}
