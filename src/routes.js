@@ -4,11 +4,11 @@ export default {
     label: 'Dashboard'
   },
   'select': {
-    path: '/select',
+    path: '/video',
     label: 'Select',
   },
   'view': {
-    path: '/view',
+    path: '/video/view',
     label: 'View'
   }
 }

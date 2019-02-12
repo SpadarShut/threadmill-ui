@@ -9,13 +9,10 @@
     height: 100%;
 }
 .content {
+    position: relative;
     flex: 1 1 auto;
     min-height: 0;
     overflow: hidden;
-    padding: var(--spacer);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 .tabs {
     flex: 0 0 auto;
