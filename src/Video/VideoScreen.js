@@ -1,7 +1,7 @@
 import React, { PureComponent, createRef } from 'react';
 import propTypes from 'prop-types';
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import routes from '../routes';
 import VideoState from './VideoState';
 import viewModes from './viewModes';
@@ -19,6 +19,7 @@ class VideoScreen extends PureComponent {
   playVideo = (e) => {
     e.preventDefault();
     this.video.current.play();
+    this.props.history.push(routes.view.path);
   }
   onVideoClick = (e) => {
     const video = this.video.current
@@ -66,4 +67,4 @@ class VideoScreen extends PureComponent {
   }
 }
 
-export default VideoScreen;
+export default withRouter(VideoScreen);
