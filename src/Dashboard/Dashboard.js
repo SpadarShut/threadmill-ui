@@ -1,8 +1,9 @@
-import React, {PureComponent} from 'react'
-import DashboardCell from './DashboardCell'
-import { formatTime, formatSpeed, formatDistance, formatPace } from '../utils'
-import propTypes from 'prop-types'
-import css from './Dashboard.module.css'
+import React, {PureComponent} from 'react';
+import propTypes from 'prop-types';
+import { formatTime, formatSpeed, formatDistance, formatPace } from '../utils';
+import { WorkoutStateConsumer } from '../Workout';
+import DashboardCell from './DashboardCell';
+import css from './Dashboard.module.css';
 
 const measurements = {
   METRIC: 0,
@@ -41,70 +42,69 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const {
-      duration,
-      duration_countdown,
-      calories,
-      speed,
-      grade,
-      heart_rate,
-      pace,
-      distance
-    } = this.props;
     let imperial = this.state.measurements === measurements.IMPERIAL;
 
     return (
-      <div className={css.dashboard}>
-        <div className={css.header}>
-          <label>
-            <input
-              type="checkbox"
-              name=""
-              id=""
-              onChange={this.toggleMeasurements}
-            />
-            {imperial ? "Imperial" : "Metric"}
-          </label>
-        </div>
-        <div className={css.grid}>
-          <DashboardCell
-            value={formatTime(duration/1000, 'hh:mm:ss')}
-            label="Duration"
-          />
-          <DashboardCell
-            value={formatTime(duration_countdown/1000, 'hh:mm:ss')}
-            label="Time left"
-          />
-          <DashboardCell
-            value={Math.floor(calories)}
-            label="Calories"
-          />
-          <DashboardCell
-            value={`${Math.floor(heart_rate)} bpm`}
-            label="Heart rate"
-          />
-          <DashboardCell
-            value={formatSpeed(speed, 1, imperial)}
-            label="Speed"
-          />
-          <DashboardCell
-            value={`${grade.toFixed(1)} %`}
-            label="Grade"
-          />
-          <DashboardCell
-            value={formatPace(pace, 'mm:ss', imperial)}
-            label="Pace"
-          />
-          <DashboardCell
-            value={formatDistance(distance, 2, imperial)}
-            label="Distance"
-          />
-
-          {/*//  pace to min/mile*/}
-          {/*//  pace as mm:ss,*/}
-
-        </div>
-      </div>
+      <WorkoutStateConsumer>
+        {({
+            duration,
+            duration_countdown,
+            calories,
+            speed,
+            grade,
+            heart_rate,
+            pace,
+            distance
+        }) => (
+          <div className={css.dashboard}>
+            <div className={css.header}>
+              <label>
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={this.toggleMeasurements}
+                />
+                {imperial ? "Imperial" : "Metric"}
+              </label>
+            </div>
+            <div className={css.grid}>
+              <DashboardCell
+                value={formatTime(duration/1000, 'hh:mm:ss')}
+                label="Duration"
+              />
+              <DashboardCell
+                value={formatTime(duration_countdown/1000, 'hh:mm:ss')}
+                label="Time left"
+              />
+              <DashboardCell
+                value={Math.floor(calories)}
+                label="Calories"
+              />
+              <DashboardCell
+                value={`${Math.floor(heart_rate)} bpm`}
+                label="Heart rate"
+              />
+              <DashboardCell
+                value={formatSpeed(speed, 1, imperial)}
+                label="Speed"
+              />
+              <DashboardCell
+                value={`${grade.toFixed(1)} %`}
+                label="Grade"
+              />
+              <DashboardCell
+                value={formatPace(pace, 'mm:ss', imperial)}
+                label="Pace"
+              />
+              <DashboardCell
+                value={formatDistance(distance, 2, imperial)}
+                label="Distance"
+              />
+            </div>
+          </div>
+        )}
+      </WorkoutStateConsumer>
     );
   }
 }

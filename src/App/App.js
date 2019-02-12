@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
-import css from './App.module.scss';
 import { Route, withRouter } from 'react-router-dom';
 import UIShell from '../UIShell/UIShell';
 import Dashboard from '../Dashboard/Dashboard';
 import { VideoScreen, viewModes } from '../Video/';
 import Tabs from '../Tabs';
 import routes from '../routes';
-import Workout from '../Workout';
+import css from './App.module.css';
 
 class App extends Component {
-  state = {
-    workout: {}
-  }
-
-  componentDidMount() {
-    this.workout = new Workout({
-      maxDurationSeconds: 30 * 60,
-      onTick: workout => {
-        this.setState({ workout })
-      }
-    });
-    this.workout.start();
+  componentDidMount(props) {
+    this.props.workout.start();
   }
 
   render() {
@@ -35,11 +24,11 @@ class App extends Component {
             exact
             path={routes.dashboard.path}
             render={() => (
-              <Dashboard {...this.state.workout} />
+              <Dashboard />
             )}
           />
           <Route path={routes.select.path}>
-            {({ match }) => (
+            {({match}) => (
               <VideoScreen
                 viewMode={
                   !match
@@ -56,7 +45,7 @@ class App extends Component {
             fullWidth
           />
         </div>
-    </UIShell>
+      </UIShell>
     );
   }
 }
