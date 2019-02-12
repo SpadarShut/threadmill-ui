@@ -1,7 +1,7 @@
 import React, { PureComponent, createRef } from 'react';
 import propTypes from 'prop-types';
 import cn from 'classnames';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import routes from '../routes';
 import VideoState from './VideoState';
 import viewModes from './viewModes';
@@ -25,6 +25,8 @@ class VideoScreen extends PureComponent {
     const video = this.video.current
     if (this.props.viewMode === viewModes.VIEW) {
       video.paused ? video.play() : video.pause()
+    } else {
+      this.props.history.push(routes.view.path);
     }
   }
 
@@ -35,30 +37,22 @@ class VideoScreen extends PureComponent {
       <VideoState>
         {({ videoSource, setSelected, sources }) => (
           <div className={cn(css.screen, css[`mode_${viewMode}`])}>
-            {
-              viewMode === viewModes.SELECT &&
-                <VideoSelect
-                  className={css.header}
-                  onSubmit={this.playVideo}
-                  value={videoSource}
-                  onChange={setSelected}
-                  values={sources}
-                />
-            }
+            <VideoSelect
+              className={cn(css.header, {[css.headerVisible]: viewMode === viewModes.SELECT})}
+              onSubmit={this.playVideo}
+              value={videoSource}
+              onChange={setSelected}
+              values={sources}
+            />
             <div className={css.preview}>
-              <Link
-                to={routes.view.path}
-                className={cn(css.videoWrapper, {[css.videoWrapper_viewMode]: viewMode === viewModes.VIEW})}
-              >
-                <video
-                  ref={this.video}
-                  className={css.video}
-                  src={videoSource}
-                  controls={false}
-                  loop
-                  onClick={this.onVideoClick}
-                />
-              </Link>
+              <video
+                ref={this.video}
+                className={cn(css.video, css[`video_mode-${viewMode}`])}
+                src={videoSource}
+                controls={false}
+                loop
+                onClick={this.onVideoClick}
+              />
             </div>
           </div>
         )}

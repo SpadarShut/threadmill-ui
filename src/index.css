@@ -1,6 +1,7 @@
 :root {
   --spacer: 1rem;
   --brand-color: deeppink;
+  --app-background: #fff;
 }
 
 * {

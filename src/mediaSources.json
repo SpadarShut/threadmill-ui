@@ -1,10 +1,14 @@
 [
   {
-    "label": "Video 1",
-    "url": "./media/RunningFeet.mov"
+    "label": "Athlete sprinting fast",
+    "url": "/media/1012928603-preview.mp4"
   },
   {
-    "label": "The_Bridge_And_The_Runner_0904.mp4",
-    "url": "./media/The_Bridge_And_The_Runner_0904.mp4"
+    "label": "Girl running on the treadmill",
+    "url": "/media/13216154-preview.mp4"
+  },
+  {
+    "label": "Senior man jogging in the park",
+    "url": "/media/31034944-preview.mp4"
   }
 ]
