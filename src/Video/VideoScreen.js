@@ -22,7 +22,7 @@ class VideoScreen extends PureComponent {
     this.props.history.push(routes.view.path);
   }
   onVideoClick = (e) => {
-    const video = this.video.current
+    const video = this.video.current;
     if (this.props.viewMode === viewModes.VIEW) {
       video.paused ? video.play() : video.pause()
     } else {
@@ -51,7 +51,7 @@ class VideoScreen extends PureComponent {
                 src={videoSource}
                 controls={false}
                 loop
-                onClick={this.onVideoClick}
+                onClick={videoSource ? this.onVideoClick : null}
               />
             </div>
           </div>

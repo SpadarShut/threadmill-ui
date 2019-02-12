@@ -41,18 +41,16 @@ button {
   border-radius: 99px;
 }
 .button {
-  border-radius: 99px;
   line-height: 1;
   text-decoration: none;
   color: inherit;
   background: none;
+  border-radius: 99px;
   transition: background-color .2s;
 }
-
 .button--large {
   padding: var(--spacer);
 }
-
 .button--branded {
   background: var(--brand-color);
   color: #fff;

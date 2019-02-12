@@ -53,6 +53,7 @@
 }
 .video[src=''] {
     background: #eee;
+    width: 70%;
 }
 .video_mode-select {
     height: 100%;
