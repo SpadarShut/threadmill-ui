@@ -1,28 +1,13 @@
 import React, { PureComponent } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
+import cn from 'classnames'
 import routes from '../routes';
 import css from './Tabs.module.css';
-import propTypes from 'prop-types';
-import cn from 'classnames'
 
 class Tabs extends PureComponent {
-  static propTypes = {
-    fullWidth: propTypes.bool,
-    size: propTypes.oneOf(['small', 'large'])
-  }
-  static defaultProps = {
-    fullWidth: false,
-    size: 'sm',
-  }
   render() {
-    const rootClass = cn(
-      css.tabs,
-      css[`size_${this.props.size}`],
-      {[css.fullWidth]: this.props.fullWidth}
-    );
-
     return (
-      <ul className={rootClass}>
+      <ul className={css.tabs}>
         {
           Object.keys(routes).map(key => {
             const route = routes[key];
@@ -34,8 +19,8 @@ class Tabs extends PureComponent {
                 <NavLink
                   exact
                   to={route.path}
-                  className={css.button}
-                  activeClassName={css.active}
+                  className={cn('button button--large', css.button)}
+                  activeClassName={cn('button--branded', css.active)}
                 >
                   {route.label}
                 </NavLink>

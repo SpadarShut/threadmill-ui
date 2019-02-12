@@ -1,12 +1,14 @@
-import css from "./VideoScreen.module.css";
 import propTypes from "prop-types";
 import React, {PureComponent} from "react";
+import cn from 'classnames';
+import css from "./VideoSelect.module.css";
 
 class VideoSelect extends PureComponent {
   static propTypes = {
     onSubmit: propTypes.func,
     value: propTypes.string,
     onChange: propTypes.func,
+    className: propTypes.string,
     values: propTypes.arrayOf(propTypes.shape({
       url: propTypes.string.isRequired,
       label: propTypes.string.isRequired,
@@ -18,16 +20,17 @@ class VideoSelect extends PureComponent {
   }
 
   render() {
-    let {onSubmit, values, value} = this.props;
+    let {onSubmit, values, value, className} = this.props;
 
     return (
       <form
-        className={css.header}
+        className={className}
         onSubmit={onSubmit}
       >
         <select
           name="videoSrc"
           id="videoSrc"
+          className={cn("select", css.select)}
           value={value}
           onChange={this.onChange}
         >
@@ -41,7 +44,7 @@ class VideoSelect extends PureComponent {
             </option>
           ))}
         </select>
-        <button>
+        <button className="button button--branded">
           Select
         </button>
       </form>

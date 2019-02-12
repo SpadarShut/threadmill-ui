@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import routes from '../routes';
-import Video from './Video';
+import VideoState from './VideoState';
 import viewModes from './viewModes';
 import VideoSelect from './VideoSelect';
 import css from './VideoScreen.module.css';
@@ -31,12 +31,13 @@ class VideoScreen extends PureComponent {
     const { viewMode } = this.props;
 
     return (
-      <Video>
+      <VideoState>
         {({ videoSource, setSelected, sources }) => (
           <div className={cn(css.screen, css[`mode_${viewMode}`])}>
             {
               viewMode === viewModes.SELECT &&
                 <VideoSelect
+                  className={css.header}
                   onSubmit={this.playVideo}
                   value={videoSource}
                   onChange={setSelected}
@@ -60,7 +61,7 @@ class VideoScreen extends PureComponent {
             </div>
           </div>
         )}
-      </Video>
+      </VideoState>
     );
   }
 }

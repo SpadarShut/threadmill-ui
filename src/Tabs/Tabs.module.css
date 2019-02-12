@@ -1,13 +1,10 @@
 .tabs {
-  display: inline-flex;
+  display: flex;
   flex: 0 0 auto;
   margin: 0;
   padding: 0;
 }
 
-.fullWidth {
-  display: flex;
-}
 .li {
   margin: 0;
   list-style: none;
@@ -16,19 +13,11 @@
 .button {
   text-align: center;
   display: block;
-  text-decoration: none;
-  border-radius: 3rem;
-  background-clip: padding-box;
-  color: inherit;
 }
 .active {
   font-weight: bold;
-  color: #fff;
-  background-color: deeppink;
 }
-.size_small .button {
-  padding: 1em;
-}
-.size_large .button {
-  padding: var(--spacer);
+
+.active:not([disabled]):hover {
+  cursor: default;
 }

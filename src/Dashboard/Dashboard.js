@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import propTypes from 'prop-types';
 import { formatTime, formatSpeed, formatDistance, formatPace } from '../utils';
 import { WorkoutStateConsumer } from '../Workout';
+import Switch from '../Switch/Switch';
 import DashboardCell from './DashboardCell';
 import css from './Dashboard.module.css';
 
@@ -41,6 +42,13 @@ class Dashboard extends PureComponent {
     })
   }
 
+  getSwitchOptions = () => {
+    return [
+      {label: 'Metric', value: measurements.METRIC},
+      {label: 'Imperial', value: measurements.IMPERIAL},
+    ]
+  }
+
   render() {
     let imperial = this.state.measurements === measurements.IMPERIAL;
 
@@ -58,15 +66,11 @@ class Dashboard extends PureComponent {
         }) => (
           <div className={css.dashboard}>
             <div className={css.header}>
-              <label>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                  onChange={this.toggleMeasurements}
-                />
-                {imperial ? "Imperial" : "Metric"}
-              </label>
+              <Switch
+                value={this.state.measurements}
+                options={this.getSwitchOptions()}
+                onChange={this.toggleMeasurements}
+              />
             </div>
             <div className={css.grid}>
               <DashboardCell

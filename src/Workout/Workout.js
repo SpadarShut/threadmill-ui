@@ -10,6 +10,8 @@ const defaultState = {
 }
 
 export default class Workout {
+  static emptyState = defaultState;
+
   constructor({ maxDurationSeconds, onTick = Function.prototype, onStop = Function.prototype }) {
     this.maxDurationSeconds = maxDurationSeconds;
     this.onTick = onTick;

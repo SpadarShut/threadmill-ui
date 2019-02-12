@@ -1,9 +1,11 @@
 :root {
   --spacer: 1rem;
+  --brand-color: deeppink;
 }
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 ul, ol, li {
   padding: 0;
@@ -25,4 +27,39 @@ body {
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+select,
+button {
+  padding: .5em 1em;
+  border: 0;
+  font: inherit;
+  outline: none !important; /* + :focus */
+}
+.select {
+  border-radius: 99px;
+}
+.button {
+  border-radius: 99px;
+  line-height: 1;
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  transition: background-color .2s;
+}
+
+.button--large {
+  padding: var(--spacer);
+}
+
+.button--branded {
+  background: var(--brand-color);
+  color: #fff;
+}
+.button--branded:not([disabled]):hover {
+  background: #f61881;
+  cursor: pointer;
+}
+.button--branded:active {
+  background: #ed1878;
 }

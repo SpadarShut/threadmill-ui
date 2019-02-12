@@ -6,7 +6,7 @@ const {Provider, Consumer} = createContext();
 class WorkoutStateProvider extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = Workout.emptyState;
     this.workout = new Workout({
       maxDurationSeconds: 30 * 60,
       onTick: workout => {

@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import mediaData from '../mediaSources';
 
-class Video extends Component {
+class VideoState extends PureComponent {
   constructor(props) {
     super(props);
     const savedVideo = localStorage.getItem('videoSource');
@@ -22,4 +22,4 @@ class Video extends Component {
   }
 }
 
-export default Video
+export default VideoState
