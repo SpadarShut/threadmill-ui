@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App/App';
 import {BrowserRouter as Router} from "react-router-dom";
-import { WorkoutStateProvider } from './Workout'
+import App from './App/App';
+import { WorkoutStateProvider } from './Workout';
+import './index.css';
 
 ReactDOM.render(
     <Router>

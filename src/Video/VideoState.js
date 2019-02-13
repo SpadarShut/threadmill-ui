@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react';
 import mediaData from '../mediaSources';
 
 const VIDEO_STORAGE_KEY = 'videoSource';
-
 class VideoState extends PureComponent {
   constructor(props) {
     super(props);

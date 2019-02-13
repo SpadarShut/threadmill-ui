@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
-import {contain} from 'intrinsic-scale';
 import propTypes from 'prop-types';
-import css from './UIShell.module.css';
+import {contain} from 'intrinsic-scale';
 import cn from 'classnames';
+import css from './UIShell.module.css';
 
 const UIShell = class UIShell extends PureComponent {
   static propTypes = {

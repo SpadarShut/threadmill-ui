@@ -9,7 +9,7 @@ import css from './App.module.css';
 
 const LOCATION_STORAGE_KEY = 'lastLocation';
 class App extends Component {
-  componentDidMount(props) {
+  componentDidMount() {
     this.syncLocation();
     this.props.workout.start();
   }
